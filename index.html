@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="index.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathurr App</title>
+</head>
+<body>
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="./Clear.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+<div class="blur-overlay"></div>
+  <!-- Main container (Blue box) -->
+  <div class="main-container">
+
+
+      <!-- Left-side content area (Green box) -->
+      <div class="content-area">
+
+          <!-- Header (Dark Gray box) -->
+          <div class="header">
+            <div class="current-date">September 30, 2024</div>
+              <!-- Put header content here (e.g., location, weather condition) -->
+          </div>
+
+          <!-- Main content or space for weather image/text -->
+          <div class="main-content">
+              <!-- Put main content here (e.g., weather information) -->
+          </div>
+
+          <!-- Footer (Dark Gray box) -->
+          <div class="footer">
+              <!-- Put footer content here (e.g., timestamp or other details) -->
+               <div class="current-weatherConditions"><h1 class="weatherHeader"></h1></div>
+          </div>
+
+          <!-- Hourly forecast (Orange boxes) -->
+          <div class="hourly-forecast">
+              <div class="hour-box" id="hour-1">
+                  <div class="hour">Hour 1</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./cloudy.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">-10&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-2">
+                  <div class="hour">Hour 2</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./hail.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">-8&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-3">
+                  <div class="hour">Hour 3</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./mist.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">-5&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-4">
+                  <div class="hour">Hour 4</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./rain.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">-3&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-5">
+                  <div class="hour">Hour 5</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./sun.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">-1&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-6">
+                  <div class="hour">Hour 6</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./tornado.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">0&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-7">
+                  <div class="hour">Hour 7</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./thunderstorm.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">2&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-8">
+                  <div class="hour">Hour 8</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./snow.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">4&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-9">
+                  <div class="hour">Hour 9</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./hail.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">7&deg;C</div>
+              </div>
+              <div class="hour-box" id="hour-10">
+                  <div class="hour">Hour 10</div>
+                  <div class="iconContainerSidebar">
+                      <div class="iconContainer">
+                          <img src="./mist.svg" class="icon"/>
+                      </div>
+                  </div>
+                  <div class="hourly-temp">10&deg;C</div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Right-side sidebar (Yellow box) -->
+      <div class="sidebar">
+        <div class="forecast-details">
+          <div class="search-box">
+            <button class="btn-search" id="search-button"><i class="fas fa-search"></i></button>
+            <input type="text" id="location" placeholder="Type here">
+          </div>
+            <div class="location-container">
+                <h2 class="location-name"><br></h2>
+            </div>
+            <div class="temperature-container">
+                <h1 class="temperature">63</h1><span class="degree">&deg;C</span>
+            </div>
+            <div class="forecast-text-container">
+                <div class="forecast-text">
+                </div>
+            </div>
+        </div>
+          <div class="nextday-forecast-container">
+            <h2 class="nextday-forecast-title">The Next Days Forecast</h2>
+            <div class="nextday-forecast-item">
+              <div class="iconContainerSidebar">
+                <img src="./cloudy.svg" class="icon"/>
+              </div>
+              <div class="nextday-forecast">
+                <div class="exact-date" id="date-1">Day 1</div>
+                <div class="weather-description" id="description-1">Cloudy</div>
+              </div>
+              <div class="minmax-temp">
+                <div class="temperature" id="min-temp-1"><img src="./low.png" class="extremesTempIcon" alt="">70&deg;F</div>
+                <div class="temperature" id="max-temp-1"><img src="./high.png" class="extremesTempIcon" alt="">80&deg;F</div>
+              </div>
+            </div>
+            <div class="nextday-forecast-item">
+              <div class="iconContainerSidebar">
+                <img src="./Rain.svg" class="icon"/>
+              </div>
+              <div class="nextday-forecast">
+                <div class="exact-date" id="date-2">Day 2</div>
+                <div class="weather-description" id="description-2">Rainy</div>
+              </div>
+              <div class="minmax-temp">
+                <div class="temperature" id="min-temp-2"><img src="./low.png" class="extremesTempIcon" alt="">65&deg;F</div>
+                <div class="temperature" id="max-temp-2"><img src="./high.png" class="extremesTempIcon" alt="">75&deg;F</div>
+              </div>
+            </div>
+            <div class="nextday-forecast-item">
+              <div class="iconContainerSidebar">
+                <img src="./Sun.svg" class="icon"/>
+              </div>
+              <div class="nextday-forecast">
+                <div class="exact-date" id="date-3">Day 3</div>
+                <div class="weather-description" id="description-3">Sunny</div>
+              </div>
+              <div class="minmax-temp">
+                <div class="temperature" id="min-temp-3"><img src="./low.png" class="extremesTempIcon" alt="">60&deg;F</div>
+                <div class="temperature" id="max-temp-3"><img src="./high.png" class="extremesTempIcon" alt="">85&deg;F</div>
+              </div>
+            </div>
+            <div class="nextday-forecast-item">
+              <div class="iconContainerSidebar">
+                <img src="./Snow.svg" class="icon"/>
+              </div>
+              <div class="nextday-forecast">
+                <div class="exact-date" id="date-4">Day 4</div>
+                <div class="weather-description" id="description-4">Stormy</div>
+              </div>
+              <div class="minmax-temp">
+                <div class="temperature" id="min-temp-4"><img src="./low.png" class="extremesTempIcon" alt="">50&deg;F</div>
+                <div class="temperature" id="max-temp-4"><img src="./high.png" class="extremesTempIcon" alt="">65&deg;F</div>
+              </div>
+            </div>
+            <div class="nextday-forecast-item">
+              <div class="iconContainerSidebar">
+                <img src="./snow.svg" class="icon"/>
+              </div>
+              <div class="nextday-forecast">
+                <div class="exact-date" id="date-5">Day 5</div>
+                <div class="weather-description" id="description-5">Snowy</div>
+              </div>
+              <div class="minmax-temp">
+                <div class="temperature" id="min-temp-5"><img src="./low.png" class="extremesTempIcon" alt="">30&deg;F</div>
+                <div class="temperature" id="max-temp-5"><img src="./high.png" class="extremesTempIcon" alt="">45&deg;F</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+  </div>
+
+</body>
+</html>

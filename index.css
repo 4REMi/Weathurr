@@ -1,0 +1,452 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+/* Reset some basic elements */
+:root{
+  --sidebartext-color: white;
+  --temperature-fontSize: 54px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-family: 'Krona One', sans-serif;
+}
+
+p {
+  font-family: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.iconContainerSidebar{
+  border: 1px solid rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+
+
+.nextday-forecast-item{
+  display: flex;
+  flex-direction: row;
+  padding: 4px 4px ;
+  width: 100%;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+}
+
+.nextday-forecast-item:hover{
+  transform: translateX(3px);
+  background: rgba(0, 0, 0, 0.171);
+  border-radius: 16px;
+
+}
+
+
+.nextday-forecast-container>*{
+  margin-bottom: 3px;
+}
+
+.hour-box{
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.23);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.8px);
+-webkit-backdrop-filter: blur(10.8px);
+border: 1px solid rgba(0, 0, 0, 0.04);
+transition: all 0.2s ease-in-out;
+}
+
+.hour-box:hover{
+  border: 1px solid rgba(255, 255, 255, 0.488);
+  transition: all .2s ease-in-out;
+}
+
+.hour-box:hover {
+  transform: translateY(-6px);
+  transition: all 0.2s ease-in-out;
+}
+
+
+.temperature-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.forecast-text-container{
+  display: flex;
+  align-items: center;
+width: 100%;
+}
+
+.nextday-forecast-title{
+  text-align: center;
+}
+
+.forecast-text {
+  text-align: center;
+  word-wrap: break-word; /* Allow words to break if necessary */
+  overflow-wrap: break-word; /* Modern version of word-wrap */
+  word-break: break-word; /* Break long words if necessary */
+  white-space: normal; /* Allow text to wrap onto the next line */
+}
+
+.forecast-details{
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Takes all the available space */
+  justify-content: space-between;
+
+}
+
+.nextday-forecast{
+  display: flex;
+  flex: 1;
+  padding-left: 10px;
+    flex-direction: column; /* Si quieres que los elementos estén uno debajo del otro */
+    align-items: flex-start; /* Esto alinea los elementos al inicio horizontalmente */
+    justify-content: flex-start; /* Esto asegura que los elementos no queden centrados verticalmente */
+}
+
+
+
+.forecast-nextdays{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.forecast-details{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.nextday-buttons>*{
+  align-items: space-around;
+  width: 33%;
+}
+
+.nextday-buttons{
+  width: 100%;
+  display: flex; 
+  flex-direction: row;
+}
+
+/* Video styling */
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the container */
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  transition: all 1.8s fade-in ease-in-out;
+}
+
+
+.content-area, .sidebar {
+
+  z-index: 2; /* Above the video */
+}
+
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.02);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(0.8px);
+-webkit-backdrop-filter: blur(10.8px);
+border: 1px solid rgba(0, 0, 0, 0.04);
+  z-index: -1;
+}
+
+/* Main container (Blue box) */
+.main-container {
+  width: 80%;  /* Reduced width to 60% of the screen */
+  height: 80vh; /* Reduced height to 60% of the viewport height */
+  display: flex; /* Flexbox for layout */
+  padding: 10px;
+  margin: auto; /* Centers the container horizontally and vertically */
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.22);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.2px);
+-webkit-backdrop-filter: blur(1.8px);
+border: 1px solid rgba(0, 0, 0, 0.04);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+/* Left-side content area (Green box) */
+.content-area {
+  flex: 3; /* Takes more space (about 3/4) */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+.current-weatherConditions, .current-date {
+  text-align: end;
+  padding: 30px;
+
+    color: white;
+}
+
+/* Header and footer (Dark Gray boxes) */
+.header, .footer {
+  height: 50px; /* Example height */
+justify-content: end;
+}
+.hourly-temp{
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.current-weatherConditions {
+  background: linear-gradient(to bottom, #ede2e2, #8e8b8b);
+  background-clip: text; /* add this line */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+}
+.hour-block {
+  width: 100%;
+  max-width: 600px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 4px 0;
+  border-radius: 4px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Hourly forecast section (Orange boxes) */
+.hourly-forecast {
+  display: flex;
+  justify-content: space-between;
+  height: 100px; /* Example height */
+}
+
+.hour-box {
+  flex: 1;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.extremesTempIcon{
+  margin-right: 2px;
+  width: 12px;
+  height: 12px;
+}
+
+
+.forecast-details, .minmax-temp {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right-side container for daily forecast (Yellow box) */
+.sidebar {
+  width: 29%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+/* From https://css.glass */
+background: rgba(0, 0, 0, 0.23);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.8px);
+-webkit-backdrop-filter: blur(10.8px);
+border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.sidebar>* {
+color: white;
+gap: 10px;
+}
+
+/* Individual forecast items (Red boxes) */
+
+
+/* Two smaller red boxes */
+.forecast-small {
+  display: flex;
+  justify-content: space-between;
+}
+
+.small-box {
+  flex: 1;
+  background-color: red;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.small-box:last-child {
+  margin-right: 0;
+}
+
+.icon{
+  width: 20px;
+}
+
+.temperature-container .temperature{
+  color: var(--sidebartext-color);
+  font-size: var(--temperature-fontSize);
+}
+
+
+.search-box{
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+#location{
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all .5s ease-in-out;
+  background-color: #00000053;
+  padding-right: 40px;
+  color: transparent; /* Makes the typed text invisible by default */
+}
+#location::placeholder{
+  color: transparent; /* Makes the typed text invisible by default */
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+  display: none
+}
+.btn-search{
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color:#ffffff ;
+  background-color:transparent;
+  pointer-events: painted;  
+}
+.btn-search:focus ~ #location{
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+#location:focus{
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom:1px solid rgba(255,255,255,.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  color: #fff; /* Makes the typed text visible on focus */
+}
+
+#location:focus::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Makes the placeholder visible on focus */
+}
+
+#location:hover{
+  color: rgba(255, 255, 255, 0.5); /* Makes the placeholder visible on focus */
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+
+
+.location-container{
+  color: var(--sidebartext-color);
+  font-size: 20px;
+  width: 80%; /* Takes 80% of the parent container’s width */
+  max-width: 600px; /* Optional: set a reasonable maximum width */
+
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text to wrap to the next line */
+  word-wrap: break-word; /* Break long words if necessary */
+  overflow-wrap: break-word; /* Ensures text wraps properly */
+  text-align: center; /* Optional: Center-align the text */
+}
+
+.location-name{
+  font-size: 12px;
+
+}
+
+
+.degree{
+  color: var(--sidebartext-color)
+}
+
+
+
+
+#location, #search-button {
+  padding: 5px 5px;
+  border-radius: 6px;
+}
+
+.search-container>*{
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+
+
+
