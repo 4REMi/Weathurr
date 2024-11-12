@@ -152,11 +152,11 @@ function formatResolvedForecastDescription(description) {
     ];
 
     const videoSource = {
-        0: '/Cloudy.mp4',
-        1: '/Clear.mp4',
-        2: '/Rain.mp4',
-        3: '/Snowy.mp4',
-        4: '/Sun.mp4',
+        0: './Cloudy.mp4',
+        1: './Clear.mp4',
+        2: './Rain.mp4',
+        3: './Snowy.mp4',
+        4: './Sun.mp4',
     };
 
     // Find the appropriate video index based on the weather condition
@@ -244,17 +244,17 @@ function formatResolvedForecastDescription(description) {
     ['Clear']
   ];
   const iconMap = {
-    0: 'snow.svg',
-    1: 'hail.svg',
-    2: 'rain.svg',
-    3: 'hail.svg',
-    4: 'thunderstorm.svg',
-    5: 'mist.svg',
-    6: 'cloudy.svg',
-    7: 'hail.svg',
-    8: 'tornado.svg',
-    9: 'sun.svg',
-    10: 'sun.svg' // Added a new mapping for the "Clear" condition
+    0: 'Snow.svg',
+    1: 'Hail.svg',
+    2: 'Rain.svg',
+    3: 'Hail.svg',
+    4: 'Thunderstorm.svg',
+    5: 'Mist.svg',
+    6: 'Cloudy.svg',
+    7: 'Hail.svg',
+    8: 'Tornado.svg',
+    9: 'Sun.svg',
+    10: 'Sun.svg' // Added a new mapping for the "Clear" condition
   };
   function retrieveIconSet (data){
     const groupIndex = iconGroups.findIndex(group => group.includes(data));
